@@ -1,7 +1,7 @@
 import * as React from 'react'
 import './Hello.css'
 
-export interface Props {
+interface Props {
   name: string,
   level?: number
 }
