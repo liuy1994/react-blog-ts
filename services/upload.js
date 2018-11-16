@@ -1,7 +1,6 @@
 import axios from '../utils/axios'
-console.log(axios)
-export default (file: any) => {
-  return axios.post('file/getPolicy').then((data: any) => {
+export default (file) => {
+  return axios.post('file/getPolicy').then((data) => {
     const formData = new FormData()
     for (const key in data) {
       if (key !== 'host') {
