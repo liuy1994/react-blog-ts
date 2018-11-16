@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './App.css';
-import Hello from './Hello'
+import Layout from './layout/Layout'
 import logo from './logo.svg';
 
 class App extends React.Component {
@@ -12,7 +12,7 @@ class App extends React.Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <div className="App-intro">
-          <Hello name='max' />
+          <Layout />
         </div>
       </div>
     );
