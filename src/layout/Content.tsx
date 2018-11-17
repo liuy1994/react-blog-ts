@@ -1,10 +1,11 @@
 import * as React from 'react'
 import './Content.css'
+console.log(React)
 // import Side from '../components/Side'
 // import Main from '../components/Main'
 // import About from '../components/About'
 
-class Content extends React.Component {
+class Content extends React.Component<any,any> {
   render() {
     // const {match} = this.props
     return (

@@ -1,5 +1,5 @@
-import docCookies from './docCookies.js'
-import axios from './axios'
+// import docCookies from './docCookies.js'
+// import axios from './axios'
 
-export const axios
-export const docCookies
+// export const axios
+// export const docCookies
