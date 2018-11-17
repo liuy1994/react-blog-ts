@@ -2,15 +2,15 @@ import axios from 'axios'
 
 axios.defaults.baseURL = '/blog'
 axios.interceptors.request.use(
-  config => {
+  (config: any) => {
     return config
   },
-  error => {
+  (error: any) => {
     return Promise.reject(error)
   }
 )
 axios.interceptors.response.use(
-  response => {
+  (response: any) => {
     let res
     // IE9时response.data是undefined，因此需要使用response.request.responseText(Stringify后的字符串)
     if (response.data === undefined) {
@@ -19,13 +19,13 @@ axios.interceptors.response.use(
       res = response.data
     }
     // 根据返回的code值来做不同的处理（和后端约定）
-    if (['401', '601'].includes(res.code)) {
+    if ('401,601'.includes(res.code)) {
       window.location.href = '#/sign/in'
       return Promise.reject(res)
     }
     return res.data
   },
-  err => {
+  (err:any) => {
     if (err && err.response) {
       err.message = '请求错误'
     }

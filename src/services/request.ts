@@ -1,41 +1,57 @@
 import axios from '../utils/axios'
 import md5 from 'md5'
 import upload from './upload'
+
+
+interface SignForm {
+  userName: string,
+  password: string
+}
+interface ContentItem { 
+  name:string,
+  content: string,
+  brief: string,
+  publish: boolean,
+  id:number,
+  noteId: number
+}
+
 export default {
   getNoteList() {
     return axios.post('note/list')
   },
-  addNoteItem(name) {
+  addNoteItem(name: string) {
     return axios.post('note/add', { name })
   },
-  deleteNoteItem(id) {
+  deleteNoteItem(id: number) {
     return axios.post('note/delete', { id })
   },
   getNoteDetail() {
     return axios.post('note/detail')
   },
 
-  getContentList(noteId) {
+  getContentList(noteId: number) {
     return axios.post('content/list', { noteId})
   },
-  getContentDetail(id) {
+  getContentDetail(id: number) {
     return axios.post('content/detail', { id })
   },
-  saveContentItem({ name, content, brief, publish, id, noteId}){
+  saveContentItem({ name, content, brief, publish, id, noteId }: ContentItem){
     return axios.post('content/save', { name, content, brief, publish, id, noteId})
   },
-  deleteContentItem(id) {
+  deleteContentItem(id: number) {
     return axios.post('content/delete', {id})
   },
 
-  checkName(userName) {
+  checkName(userName: string) {
     return axios.post('user/checkExit', { userName })
   },
-  signup({ userName, password }){
+  signup({ userName, password }: SignForm){
     password = md5(password)
     return axios.post('user/signup', { userName, password })
   },
-  login({ userName, password }) {
+  
+  login({ userName, password }: SignForm) {
     password = md5(password)
     return axios.post('user/login', { userName, password })
   },
@@ -43,7 +59,7 @@ export default {
     return axios.post('user/logout')
   },
 
-  upload(file) {
+  upload(file: any) {
     return upload(file)
   }
 }
