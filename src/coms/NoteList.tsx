@@ -2,7 +2,7 @@ import * as React from 'react'
 import request from '../services/request'
 // import './NoteList.less'
 import { Form, Input, Modal, List, Icon } from 'antd'
-// import store from '../redux/store'
+import store from '../redux/store'
 // import { connect } from 'react-redux'
 
 
@@ -68,10 +68,10 @@ class NoteList extends React.Component<any, any> {
   }
   selectNote = (id:number) => {
     console.log(id)
-    // store.dispatch({
-    //   type: 'SELECT_NOTE',
-    //   id
-    // })
+    store.dispatch({
+      type: 'SELECT_NOTE',
+      id
+    })
     // if (!/list/.test(window.location.hash)){
     //   window.location.href = '/#/list'
     // }
