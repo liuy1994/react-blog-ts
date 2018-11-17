@@ -1,5 +1,5 @@
 import * as React from 'react'
-// import request from '../services/request'
+import docCookies from '../utils/docCookies'
 import { Form, Input, Button } from 'antd'
 const FormItem = Form.Item
 import request from "../services/request";
@@ -19,8 +19,8 @@ class Login extends React.Component<any, any> {
   login = () => {
     this.props.form.validateFields((err: object, values: LoginForm) => {
       if (!err) {
-        request.login(values).then(() => {
-          // docCookies.setItem('max_blog', data)
+        request.login(values).then((data: any) => {
+          docCookies.setItem('max_blog', data)
           window.location.href = '#/list'
         })
       }
