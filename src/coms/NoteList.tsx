@@ -3,7 +3,7 @@ import request from '../services/request'
 // import './NoteList.less'
 import { Form, Input, Modal, List, Icon } from 'antd'
 import store from '../redux/store'
-// import { connect } from 'react-redux'
+import { connect } from 'react-redux'
 
 
 
@@ -115,10 +115,9 @@ class NoteList extends React.Component<any, any> {
   }
 }
 const WrappedNoteList = Form.create()(NoteList)
-// const mapStateToProps = (state) => {
-//   return {
-//     selectedNoteId: state.notelist.selectedNoteId
-//   }
-// }
-// export default connect(mapStateToProps)(WrappedNoteList)
-export default WrappedNoteList
+const mapStateToProps = ({ notelist }) => {
+  return {
+    selectedNoteId: notelist.selectedNoteId
+  }
+}
+export default connect(mapStateToProps)(WrappedNoteList)
