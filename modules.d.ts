@@ -18,6 +18,7 @@ declare module 'axios' {
 //   const redux: any;
 //   export default redux;
 // }
+declare module 'redux';
 declare module 'redux-persist';
 declare module 'redux-persist/es/integration/react';
 declare module 'redux-persist/es/storage';
