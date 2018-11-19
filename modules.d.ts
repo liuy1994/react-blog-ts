@@ -6,14 +6,11 @@ declare module 'axios' {
   const axios: any;
   export default axios;
 }
-// declare module 'redux-persist' {
-//   const redux-persist: any;
-//   export default redux-persist;
-// }
-// declare module 'redux' {
-//   const redux: {
-//     createStore:void,
-//     applyMiddleware: void
-//   };
-//   export default redux;
-// }
+declare module 'redux-persist' {
+  const reduxPersist: any;
+  export default reduxPersist;
+}
+declare module 'redux' {
+  const redux: any;
+  export default redux;
+}
