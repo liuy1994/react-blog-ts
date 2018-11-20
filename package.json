@@ -31,5 +31,6 @@
     "@types/redux": "^3.6.0",
     "@types/redux-persist": "^4.3.1",
     "typescript": "^3.1.6"
-  }
+  },
+  "proxy": "http://47.52.234.164:2333"
 }

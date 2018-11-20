@@ -3,7 +3,7 @@ import md5 from 'md5'
 import upload from './upload'
 
 
-interface SignForm {
+export interface SignForm {
   userName: string,
   password: string
 }
