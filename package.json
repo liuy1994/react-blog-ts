@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@types/quill": "^2.0.1",
     "antd": "^3.10.8",
     "axios": "^0.18.0",
     "md5": "^2.2.1",
@@ -12,7 +11,7 @@
     "react-quill": "^1.3.2",
     "react-redux": "^5.1.1",
     "react-router-dom": "^4.3.1",
-    "react-scripts-ts": "^3.1.0",
+    "react-scripts-ts": "^4.0.8",
     "redux": "4.0.1",
     "redux-persist": "^5.10.0",
     "redux-thunk": "^2.3.0"
@@ -24,6 +23,7 @@
     "eject": "react-scripts-ts eject"
   },
   "devDependencies": {
+    "@types/quill": "^2.0.1",
     "@types/jest": "^23.3.9",
     "@types/node": "^10.12.9",
     "@types/react": "^16.7.6",
@@ -34,5 +34,11 @@
     "@types/redux-persist": "^4.3.1",
     "typescript": "^3.1.6"
   },
-  "proxy": "http://47.52.234.164:2333"
+  "proxy": "http://47.52.234.164:2333",
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
