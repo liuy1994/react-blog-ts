@@ -1,5 +1,5 @@
 import * as React from 'react'
-import request, { ContentItem } from '../services/request'
+import request from '../services/request'
 import { Form, Input, Button, Switch } from 'antd'
 // import './ContentEdit.less'
 import ContentInput from './ContentInput'
