@@ -2,7 +2,7 @@ import * as React from 'react'
 import './Content.css'
 import Side from './Side'
 // import Main from '../components/Main'
-// import About from '../components/About'
+import About from './About'
 
 class Content extends React.Component<any,any> {
   render() {
@@ -11,8 +11,7 @@ class Content extends React.Component<any,any> {
       <div className="content">
         <Side></Side>
         {/* <Main routePath={match}></Main> */}
-        {/* <About></About> */}
-        <div>contentcontentcontentcontentcontentcontentcontent</div>
+        <About></About>
       </div>
     )
   }

@@ -1,6 +1,11 @@
 import axios from '../utils/axios'
-export default (file) => {
-  return axios.post('file/getPolicy').then((data) => {
+export interface File {
+  name: string,
+  size: number,
+  type: string,
+}
+export default (file: Blob & File) => {
+  return axios.post('file/getPolicy').then((data: { dir: string, host:string}) => {
     const formData = new FormData()
     for (const key in data) {
       if (key !== 'host') {

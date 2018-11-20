@@ -72,14 +72,13 @@ class NoteList extends React.Component<any, State> {
     })
   }
   selectNote = (id:number) => {
-    console.log(id)
     store.dispatch({
       type: 'SELECT_NOTE',
       id
     })
-    // if (!/list/.test(window.location.hash)){
-    //   window.location.href = '/#/list'
-    // }
+    if (!/list/.test(window.location.hash)){
+      window.location.href = '/#/list'
+    }
   }
   componentDidMount() {
     this.getNoteList()
@@ -98,12 +97,11 @@ class NoteList extends React.Component<any, State> {
           bordered
           dataSource={notelist}
           renderItem={(item: { id: number, name: string }) => (
-          <ListItem>
+            <ListItem>
               <span onClick={this.selectNote.bind(this, item.id)}>{item.name}</span>
-            <Icon onClick={this.confirmDetele} type="delete" theme="outlined" />
+              <Icon onClick={this.confirmDetele} type="delete" theme="outlined" />
             </ListItem>
-            )
-          }
+          )}
         />
         <Modal visible={visible} title="新增笔记本" onOk={this.confirmAdd} onCancel={this.cancelAdd}>
           <Form>

@@ -7,13 +7,13 @@ export interface SignForm {
   userName: string,
   password: string
 }
-interface ContentItem { 
+export interface ContentItem { 
   name:string,
   content: string,
   brief: string,
-  publish: boolean,
-  id:number,
-  noteId: number
+  publish?: boolean,
+  id:any,
+  noteId: any
 }
 
 export default {
