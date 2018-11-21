@@ -1,12 +1,13 @@
 import * as React from 'react'
 import request from '../services/request'
 import { Form, Input, Button, Switch } from 'antd'
+import { FormComponentProps } from 'antd/lib/form/Form'
 // import './ContentEdit.less'
 import ContentInput from './ContentInput'
 import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
 const FormItem = Form.Item
-interface Props {
+export interface Props {
     form: {
         getFieldDecorator: any,
         validateFields: any
@@ -25,8 +26,8 @@ interface State {
     content: string,
     id: any
 }
-class AddForm extends React.Component<Props, State> {
-    constructor(props: Props) {
+class AddForm extends React.Component<Props & FormComponentProps, State> {
+    constructor(props: Props & FormComponentProps) {
         super(props)
         this.state = {
             name: '',
@@ -76,7 +77,7 @@ class AddForm extends React.Component<Props, State> {
             wrapperCol: { span: 20, align: "left" },
         }
         let { name, brief, content} = this.state
-        const { match } = this.props
+        const { match, selectedNoteId } = this.props
         return (
             <div className="content-edit-form">
                 <h3>{match.params.id ? '编辑' : '新增'}博文</h3>
@@ -97,7 +98,7 @@ class AddForm extends React.Component<Props, State> {
                         {getFieldDecorator('content', {
                             initialValue: content,
                             rules: [{ required: true, message: 'Please input your content!', }],
-                        })(<ContentInput noteId={this.props.selectedNoteId} content={content} onInput={this.inputContent}/>)}
+                        })(<ContentInput noteId={selectedNoteId} content={content} onInput={this.inputContent}/>)}
                     </FormItem>
                     <FormItem label="直接发布" {...formItemLayout}>
                         {getFieldDecorator('publish', {
@@ -115,7 +116,7 @@ class AddForm extends React.Component<Props, State> {
 }
 
 const MainAdd = Form.create()(AddForm)
-const mapStateToProps = (state: { selectedNoteId: number}) => {
+const mapStateToProps = (state: Props) => {
   return {
     selectedNoteId: state.selectedNoteId
   }

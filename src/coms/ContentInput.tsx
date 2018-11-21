@@ -1,4 +1,5 @@
 import * as React from 'react'
+import {Component} from 'react'
 import * as ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 import { Spin } from 'antd'
@@ -14,7 +15,7 @@ interface State {
   text: string,
   spinning: boolean
 }
-class ContentInput extends React.Component<Props, State>{
+class ContentInput extends Component<Props, State>{
   constructor(props: Props) {
     super(props)
     this.state = {
