@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Login from '../coms/Login'
 import SignUp from '../coms/SignUp'
-// import './NoLogin.less'
+import './NoLogin.less'
 
 interface Props {
   match: {

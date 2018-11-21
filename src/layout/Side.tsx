@@ -1,6 +1,6 @@
 import * as React from 'react'
 import NoteList from '../coms/NoteList'
-// import './Side.less'
+import './Side.less'
 class Side extends React.Component {
   render() {
     return (

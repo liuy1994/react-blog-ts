@@ -1,5 +1,5 @@
 import * as React from 'react'
-import './Content.css'
+import './Content.less'
 import Side from './Side'
 import Main from './Main'
 import About from './About'

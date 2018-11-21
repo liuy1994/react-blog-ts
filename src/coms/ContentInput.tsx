@@ -3,7 +3,7 @@ import {Component} from 'react'
 import * as ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 import { Spin } from 'antd'
-// import './ContentInput.less'
+import './ContentInput.less'
 import request from '../services/request';
 import {File} from '../services/upload';
 interface Props {

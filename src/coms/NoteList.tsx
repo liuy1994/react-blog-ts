@@ -1,6 +1,6 @@
 import * as React from 'react'
 import request from '../services/request'
-// import './NoteList.less'
+import './NoteList.less'
 import { Form, Input, Modal, List, Icon } from 'antd'
 import store from '../redux/store'
 import { connect } from 'react-redux'

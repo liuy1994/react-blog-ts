@@ -1,6 +1,7 @@
 import * as React from 'react'
 import docCookies from '../utils/docCookies'
 import { Form, Input, Button } from 'antd'
+import './Login.less'
 const FormItem = Form.Item
 import request from "../services/request";
 

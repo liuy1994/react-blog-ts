@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import './ContentList.less'
+import './ContentList.less'
 import request from '../services/request'
 import { List, Button, Modal } from 'antd'
 import { Link } from 'react-router-dom'

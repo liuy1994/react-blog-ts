@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import './ContentItem.less'
+import './ContentItem.less'
 import request from '../services/request'
 import { Spin } from 'antd';
 

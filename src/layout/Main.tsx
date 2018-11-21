@@ -1,5 +1,5 @@
 import * as React from 'react'
-// import './Main.less'
+import './Main.less'
 import ContentEdit from '../coms/ContentEdit'
 import ContentList from '../coms/ContentList'
 import ContentItem from '../coms/ContentItem'

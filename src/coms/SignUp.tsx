@@ -2,7 +2,7 @@ import * as React from 'react'
 import request, { SignForm } from '../services/request'
 import { Form, Input, Button } from 'antd'
 import { Link } from 'react-router-dom'
-// import './signup.less'
+import './signup.less'
 const FormItem = Form.Item
 
 class SignUpForm extends React.Component<any, object> {

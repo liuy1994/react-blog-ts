@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Button } from 'antd'
-// import './About.less'
+import './About.less'
 import docCookies from '../utils/docCookies'
 import request from '../services/request'
 class Main extends React.Component {
