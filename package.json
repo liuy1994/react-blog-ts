@@ -17,9 +17,9 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "start": "react-scripts-ts start",
-    "build": "react-scripts-ts build",
-    "test": "react-scripts-ts test --env=jsdom",
+    "start": "react-app-rewired start --scripts-version react-scripts-ts",
+    "build": "react-app-rewired build --scripts-version react-scripts-ts",
+    "test": "react-app-rewired test --env=jsdom --scripts-version react-scripts-ts",
     "eject": "react-scripts-ts eject"
   },
   "devDependencies": {
@@ -31,9 +31,11 @@
     "@types/react-router-dom": "^4.3.1",
     "@types/redux": "^3.6.0",
     "@types/redux-persist": "^4.3.1",
+    "react-app-rewired": "^1.6.2",
+    "ts-import-plugin": "^1.5.5",
     "typescript": "^3.1.6"
   },
-  "proxy": "http://47.52.234.164:2333",
+  "proxy": "http://127.0.0.1:9000",
   "browserslist": [
     ">0.2%",
     "not dead",
