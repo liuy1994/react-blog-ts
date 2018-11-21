@@ -116,9 +116,9 @@ class AddForm extends React.Component<Props & FormComponentProps, State> {
 }
 
 const MainAdd = Form.create()(AddForm)
-const mapStateToProps = (state: Props) => {
+const mapStateToProps = (state: { notelist: Props}) => {
   return {
-    selectedNoteId: state.selectedNoteId
+    selectedNoteId: state.notelist.selectedNoteId
   }
 }
 export default connect(mapStateToProps)(MainAdd)

@@ -59,16 +59,16 @@ class NoteList extends React.Component<any, State> {
       console.log(this.state)
     }, 3000)
   }
-  deleteItem = () => {
-    request.deleteNoteItem(this.props.id).then(() => {
-      this.props.getlist()
+  deleteItem = (id) => {
+    request.deleteNoteItem(id).then(() => {
+      this.getNoteList()
     })
   }
-  confirmDetele = () => {
+  confirmDetele = (id) => {
     Modal.confirm({
       title: '提示',
       content: '确认删除?',
-      onOk: this.deleteItem.bind(this)
+      onOk:() => this.deleteItem(id)
     })
   }
   selectNote = (id:number) => {
@@ -99,7 +99,7 @@ class NoteList extends React.Component<any, State> {
           renderItem={(item: { id: number, name: string }) => (
             <ListItem>
               <span onClick={this.selectNote.bind(this, item.id)}>{item.name}</span>
-              <Icon onClick={this.confirmDetele} type="delete" theme="outlined" />
+              <Icon onClick={this.confirmDetele.bind(this, item.id)} type="delete" theme="outlined" />
             </ListItem>
           )}
         />
