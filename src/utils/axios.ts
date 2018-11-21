@@ -1,4 +1,6 @@
 import axios from 'axios'
+import { message } from 'antd'
+console.log(message)
 // axios.defaults.baseURL = '/blog'
 axios.interceptors.request.use(
   (config: any) => {
@@ -18,11 +20,16 @@ axios.interceptors.response.use(
       res = response.data
     }
     // 根据返回的code值来做不同的处理（和后端约定）
-    if ('401,601'.includes(res.code)) {
+    if ('4001, 4002'.includes(res.code)) {
       window.location.href = '#/sign/in'
       return Promise.reject(res)
     }
-    return res.data
+    if (res.code === '0000') {
+      return res.data
+    } else {
+      message.error(res.msg)
+      return Promise.reject(res)
+    }
   },
   (err:any) => {
     if (err && err.response) {
