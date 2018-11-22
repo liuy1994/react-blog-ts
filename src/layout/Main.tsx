@@ -3,6 +3,7 @@ import './Main.less'
 import ContentEdit from '../coms/ContentEdit'
 import ContentList from '../coms/ContentList'
 import ContentItem from '../coms/ContentItem'
+import User from '../coms/User'
 import { Switch, Route, Redirect } from 'react-router-dom'
 
 interface Props {
@@ -21,6 +22,7 @@ class Main extends React.Component<Props, object> {
         <Link to="/detail">detail&nbsp;&nbsp;&nbsp;&nbsp;</Link> */}
         <Switch>
           <Redirect exact path="/" to={{ pathname: '/list' }} />
+          <Route path={`${routePath.path}user`} component={User}></Route>
           <Route path={`${routePath.path}list`} component={ContentList}></Route>
           <Route path={`${routePath.path}add`} component={ContentEdit}></Route>
           <Route path={`${routePath.path}edit/:id`} component={ContentEdit}></Route>

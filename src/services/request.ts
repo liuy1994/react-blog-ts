@@ -15,7 +15,12 @@ export interface ContentItem {
   id:any,
   noteId: any
 }
-
+export interface UserInfo {
+  name: string,
+  email: string,
+  mobile: string,
+  wechat: string
+}
 export default {
   getNoteList() {
     return axios.post('note/list')
@@ -57,6 +62,12 @@ export default {
   },
   logout() {
     return axios.post('user/logout')
+  },
+  updateUserInfo(params: UserInfo) {
+    return axios.post('user/update', params)
+  },
+  getUserInfo() {
+    return axios.post('user/info')
   },
 
   upload(file: any) {
