@@ -2,7 +2,6 @@ import * as React from 'react'
 import './Content.less'
 import Side from './Side'
 import Main from './Main'
-import About from './About'
 
 class Content extends React.Component<any,any> {
   render() {
@@ -11,7 +10,6 @@ class Content extends React.Component<any,any> {
       <div className="content">
         <Side></Side>
         <Main routePath={match}></Main>
-        <About></About>
       </div>
     )
   }
