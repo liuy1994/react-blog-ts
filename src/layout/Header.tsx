@@ -1,6 +1,5 @@
 import * as React from 'react'
 import './Header.less'
-import { Button } from 'antd'
 import { connect } from 'react-redux'
 import docCookies from '../utils/docCookies'
 import request from '../services/request'
@@ -9,7 +8,7 @@ interface Props {
   userName: string
 }
 class Header extends React.Component<Props> {
-  logout = () => {
+  logout = (): void => {
     request.logout().then(() => {
       store.dispatch({
         type: 'LOGOUT'
@@ -23,18 +22,10 @@ class Header extends React.Component<Props> {
     return (
       <div className="header">
         <div className="content">
-            <div className="logo">
-              This is a logo
-            </div>
-            {userName ? (
-              <div className="about">
-                Hello, {userName} 
-                <Button type="primary" onClick={this.logout}>注销</Button>
-              </div>
-            ) : (
-              <div>Hello, 请登录.</div>
-            )
-          }
+          <div className="logo">
+            This is a logo
+          </div>
+          <div>Hello, <a href="/#/user">{userName}</a> <a href="javascript: void(0);" onClick={this.logout}>注销</a></div>
         </div>
       </div>
     )

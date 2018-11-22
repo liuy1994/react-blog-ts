@@ -1,21 +1,24 @@
 import * as React from 'react'
 import './Footer.less'
-import { Icon } from 'antd'
+import { Icon, Popover } from 'antd'
 
 const IconFont = Icon.createFromIconfontCN({
-  scriptUrl: '//at.alicdn.com/t/font_930533_nzsh6cy2fm.js',
+  scriptUrl: '//at.alicdn.com/t/font_930533_tmrdacuney.js',
 })
 
 class Footer extends React.Component {
   render() {
+    const wechat = (
+      <div className="wechat-img">
+        <img src="http://liuy1994.oss-cn-hongkong.aliyuncs.com/blog/wechat.jpg" width="256" height="256" alt="wechat"/>
+      </div>
+    )
     return (
       <div className="footer">
         <div className="content">
-          <a href="" title="node"><IconFont type="icon-Nodejs" /></a>
-          <a href="" title="react"><IconFont type="icon-React" /></a>
-          <a href="" title="webpack"><IconFont type="icon-webpack" /></a>
-          <a href="" title="redux"><IconFont type="icon-redux" /></a>
-          <a href="" title="github" target="_blank" rel="noopener"><IconFont type="icon-github" /></a>
+          <a href="https://github.com/liuy1994/react-blog-ts" title="github" target="_blank" rel="noopener"><IconFont type="icon-github" /></a>
+          <a href="javascript: void(0);"><Popover content={wechat}><IconFont type="icon-wechat" /></Popover></a>
+          <a href="mailto:liuy1994@outlook.com" title="outlook"><IconFont type="icon-OUTLOOK" /></a>
         </div>
       </div>
     )

@@ -5,7 +5,8 @@ import 'react-quill/dist/quill.snow.css'
 import { Spin } from 'antd'
 import './ContentInput.less'
 import request from '../services/request';
-import {File} from '../services/upload';
+
+
 interface Props {
   content: string,
   noteId: number,
@@ -23,6 +24,9 @@ class ContentInput extends Component<Props, State>{
       spinning: false
     }
   }
+  
+  public inputUpload: any
+  quillRef: any
   componentWillReceiveProps(props: Props) {
     this.setState({
       text: props.content
@@ -47,23 +51,27 @@ class ContentInput extends Component<Props, State>{
     this.setState({ text: '' })
   }
   imageHandler() {
-    // this.inputUpload.click()
+    this.inputUpload.click()
   }
-  selectImg(event: { target: { files: File[]}}) {
+  selectImg(event: any) {
     this.setState({
       spinning: true
     })
-    request.upload(event.target.files[0]).then((data: any) => {
+    if (event) request.upload(event.target.files[0]).then((data: any) => {
       this.setState({
         spinning: false
       })
       this.inserImg(data)
+    }, () => {
+      this.setState({
+        spinning: false
+      })
     })
   }
   inserImg(url: string){
-    // const range = this.quillRef.getEditor().getSelection()
-    // this.quillRef.getEditor().insertEmbed(range.index, 'image', url)
-    // this.quillRef.getEditor().setSelection(range.index + 1)
+    const range = this.quillRef.getEditor().getSelection()
+    this.quillRef.getEditor().insertEmbed(range.index, 'image', url)
+    this.quillRef.getEditor().setSelection(range.index + 1)
   }
   handleChange(value: string) {
     this.setState({ text: value })
@@ -76,10 +84,10 @@ class ContentInput extends Component<Props, State>{
     let { text, spinning } = this.state
     return (
       <div className="content-input">
-        {/* <input type="file" ref={ref => this.inputUpload = ref} onChange={event => this.selectImg(event)}/> */}
+        <input type="file" ref={ref => this.inputUpload = ref} onChange={event => this.selectImg(event)}/>
         <Spin size="large" spinning={spinning}>
           <ReactQuill
-            // ref={ref => this.quillRef = ref}
+            ref={ref => this.quillRef = ref}
             theme="snow"
             modules={this.modules}
             value={text}
