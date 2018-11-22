@@ -33,18 +33,15 @@ class UserForm extends React.Component<Props & FormComponentProps, UserInfo>{
       if (!err) {
         let params = {
           ...values,
-          id: this.props.userId
+          name: this.state.name
         }
         request.updateUserInfo(params).then(() => {
-          window.location.href = '/#/list'
+          this.getUserInfo()
         })
       }
     })
   }
-  back = () => {
-    
-  }
-  componentDidMount() {
+  getUserInfo = () => {
     request.getUserInfo().then((data: UserInfo) => {
       this.setState({
         name: data.name,
@@ -53,6 +50,9 @@ class UserForm extends React.Component<Props & FormComponentProps, UserInfo>{
         wechat: data.wechat
       })
     })
+  }
+  componentDidMount() {
+    this.getUserInfo()
   }
   render() {
     const { getFieldDecorator } = this.props.form
