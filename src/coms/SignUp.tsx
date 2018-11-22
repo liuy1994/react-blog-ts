@@ -79,7 +79,7 @@ class SignUpForm extends React.Component<any, object> {
                     <FormItem label="">
                         <div className="buttons">
                             <Button type="primary" onClick={this.signup}>注册</Button>
-                            <Link to="/sign/in">登陆</Link>
+                            <Link to="/sign/in">登录</Link>
                         </div>
                     </FormItem>
                 </Form>

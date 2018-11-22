@@ -3,7 +3,13 @@ import { Button } from 'antd'
 import './About.less'
 import docCookies from '../utils/docCookies'
 import request from '../services/request'
-class Main extends React.Component {
+import { connect } from 'react-redux'
+
+interface Props {
+  userName: string
+}
+
+class About extends React.Component<Props> {
   logout = () => {
     request.logout().then(() => {
       docCookies.removeItem('max_blog')
@@ -11,11 +17,24 @@ class Main extends React.Component {
     })
   }
   render() {
+    let {userName} = this.props
     return (
       <div className="content-about">
-        <Button type="primary" onClick={this.logout}>注销</Button>
+        <p>hello, {userName}</p>
+        <p><Button type="primary" onClick={this.logout}>注销</Button></p>
       </div>
     )
   }
 }
-export default Main
+
+interface StateProps {
+  user: {
+    userName: string
+  }
+}
+const mapStateToProps = (state: StateProps) => {
+  return {
+    userName: state.user.userName
+  }
+}
+export default connect(mapStateToProps)(About)

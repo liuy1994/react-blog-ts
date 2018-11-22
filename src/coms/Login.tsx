@@ -2,8 +2,10 @@ import * as React from 'react'
 import docCookies from '../utils/docCookies'
 import { Form, Input, Button } from 'antd'
 import './Login.less'
+import { Link } from 'react-router-dom'
 const FormItem = Form.Item
 import request from "../services/request";
+import store from '../redux/store'
 
 interface Props {
   form: any
@@ -20,8 +22,12 @@ class Login extends React.Component<any, any> {
   login = () => {
     this.props.form.validateFields((err: object, values: LoginForm) => {
       if (!err) {
-        request.login(values).then((data: any) => {
-          docCookies.setItem('max_blog', data)
+        request.login(values).then((data: {userName: string, jwt: string}) => {
+          store.dispatch({
+            type: 'LOGIN',
+            userName: data.userName
+          })
+          docCookies.setItem('max_blog', data.jwt)
           window.location.href = '#/list'
         })
       }
@@ -46,8 +52,8 @@ class Login extends React.Component<any, any> {
           </FormItem>
           <FormItem label="">
             <div className="buttons">
-              <Button type="primary" onClick={this.login}>登陆</Button>
-              {/* <Link to="/sign/up">注册</Link> */}
+              <Button type="primary" onClick={this.login}>登录</Button>
+              <Link to="/sign/up">注册</Link>
             </div>
           </FormItem>
         </Form>

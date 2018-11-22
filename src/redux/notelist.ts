@@ -1,4 +1,4 @@
-interface action {
+interface Action {
   type: string,
   id: number
 }
@@ -8,7 +8,7 @@ interface State {
 const defaultState = {
   selectedNoteId: null
 }
-const notelist = (state = defaultState, action: action): State => {
+const notelist = (state = defaultState, action: Action): State => {
   switch (action.type) {
     case 'SELECT_NOTE':
       return Object.assign({}, state, {
