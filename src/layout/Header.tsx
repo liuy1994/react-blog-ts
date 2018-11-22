@@ -28,7 +28,7 @@ class Header extends React.Component<Props> {
             </div>
             {userName ? (
               <div className="about">
-                Hello, userName,
+                Hello, {userName} 
                 <Button type="primary" onClick={this.logout}>注销</Button>
               </div>
             ) : (
