@@ -1,6 +1,6 @@
 interface Action {
   type: string,
-  id: number
+  id?: number
 }
 interface State {
   selectedNoteId: any
@@ -12,7 +12,7 @@ const notelist = (state = defaultState, action: Action): State => {
   switch (action.type) {
     case 'SELECT_NOTE':
       return Object.assign({}, state, {
-        selectedNoteId: action.id
+        selectedNoteId: action.id || null
       })
     default:
       return state

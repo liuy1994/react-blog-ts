@@ -35,6 +35,9 @@ export default {
     return axios.post('note/detail')
   },
 
+  queryContentList(keyword: string) {
+    return axios.post('content/query', { keyword })
+  },
   getContentList(noteId: number) {
     return axios.post('content/list', { noteId})
   },

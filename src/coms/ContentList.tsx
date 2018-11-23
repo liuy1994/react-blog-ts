@@ -1,28 +1,31 @@
 import React, { Component } from 'react'
 import './ContentList.less'
 import request from '../services/request'
-import { List, Button, Modal } from 'antd'
+import { List, Button, Modal, Input, Row } from 'antd'
 import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
-
+import store from '../redux/store'
+const Search = Input.Search
 interface Props {
   selectedNoteId: number
 }
 interface State {
-  contentList: object[]
+  contentList: object[],
+  searched: boolean
 }
 class ContentList extends Component<Props, State> {
   constructor(props: Props) {
     super(props)
     this.state = {
-      contentList: []
+      contentList: [],
+      searched: false
     }
   }
   componentWillReceiveProps(nextProps) {
-    this.getList(nextProps.selectedNoteId)
+    if (nextProps.selectedNoteId) this.getList(nextProps.selectedNoteId)
   }
   componentDidMount() {
-    this.getList(this.props.selectedNoteId)
+    if (this.props.selectedNoteId) this.getList(this.props.selectedNoteId)
   }
   getList(noteId) {
     if (noteId) {
@@ -47,36 +50,57 @@ class ContentList extends Component<Props, State> {
       this.getList(this.props.selectedNoteId)
     })
   }
+  search = (keyword: string) => {
+    store.dispatch({
+      type: 'SELECT_NOTE'
+    })
+    this.setState({
+      searched: true
+    })
+    request.queryContentList(keyword).then(data => {
+      this.setState({
+        contentList: data.list
+      })
+    })
+  }
   render() {
-    let { contentList } = this.state
+    let { contentList, searched } = this.state
     let noteId = this.props.selectedNoteId
-    if(noteId) {
+    // if (noteId || searched) {
       return (
         <div className="content-list">
-          <h3><Link to="/add"><Button size="small" type="primary">新增文章</Button></Link></h3>
-          <List
-            bordered={true}
-            dataSource={contentList}
-            renderItem={item => (
-              <List.Item key={item.id}>
-                <List.Item.Meta
-                  title={<Link to={`detail/${item.id}`}>{item.name}</Link>}
-                  description={item.brief}
-                />
-                <Link to={`/edit/${item.id}`}><Button type="primary">编辑</Button></Link>
-                <Button type="danger" onClick={this.showDeleteItem.bind(this, item.id)}>删除</Button>
-              </List.Item>
-            )}
-          ></List>
+          <Row>
+            {noteId ? <Link className="add-content" to="/add"><Button size="small" type="primary">新增文章</Button></Link> : null}
+            <Search placeholder="input search text" onSearch={value => this.search(value)} enterButton />
+          </Row>
+          {
+            (noteId || searched) ? 
+              <List
+                bordered={true}
+                dataSource={contentList}
+                renderItem={item => (
+                  <List.Item key={item.id}>
+                    <List.Item.Meta
+                      title={<Link to={`detail/${item.id}`}>{item.name}</Link>}
+                      description={item.brief}
+                    />
+                    <Link to={`/edit/${item.id}`}><Button type="primary">编辑</Button></Link>
+                    <Button type="danger" onClick={this.showDeleteItem.bind(this, item.id)}>删除</Button>
+                  </List.Item>
+                )}
+              ></List> : 
+              <h1>Welcome, 选择一个笔记本或者输入关键字搜索</h1>
+          }
+          
         </div>
       )
-    } else {
-      return (
-        <div>
-          <h1>Welcome, 请先选择一个笔记本</h1>
-        </div>  
-      )
-    }
+    // } else {
+    //   return (
+    //     <div>
+    //       <Search placeholder="input search text" onSearch={value => this.search(value)} enterButton />
+    //     </div>  
+    //   )
+    // }
   }
 }
 const mapStateToProps = ({ notelist }) => {
