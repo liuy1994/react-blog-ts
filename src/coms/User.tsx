@@ -61,7 +61,7 @@ class UserForm extends React.Component<Props & FormComponentProps, UserInfo>{
       <div className="user">
         <Form layout="vertical">
           <FormItem label="用户名">
-            <p>{name}</p>
+            <h3>{name}</h3>
           </FormItem>
           <FormItem label="邮箱">
             {getFieldDecorator('email', {
