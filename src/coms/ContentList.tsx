@@ -27,7 +27,7 @@ class ContentList extends Component<Props, State> {
   componentDidMount() {
     if (this.props.selectedNoteId) this.getList(this.props.selectedNoteId)
   }
-  getList(noteId) {
+  getList = (noteId: number) => {
     if (noteId) {
       request.getContentList(noteId).then(data => {
         this.setState({
@@ -36,7 +36,7 @@ class ContentList extends Component<Props, State> {
       })
     }
   }
-  showDeleteItem(id) {
+  showDeleteItem = (id: number) : void => {
     Modal.confirm({
       title: 'Confirm',
       content: '删除这篇文章？',
@@ -45,7 +45,7 @@ class ContentList extends Component<Props, State> {
       onOk: () => this.deleteItem(id)
     });
   }
-  deleteItem(id) {
+  deleteItem = (id: number): void => {
     request.deleteContentItem(id).then(() => {
       this.getList(this.props.selectedNoteId)
     })
@@ -84,7 +84,7 @@ class ContentList extends Component<Props, State> {
                     description={item.brief}
                   />
                   <Link to={`/edit/${item.id}`}><Button type="primary">编辑</Button></Link>
-                  <Button type="danger" onClick={this.showDeleteItem.bind(this, item.id)}>删除</Button>
+                  <Button type="danger" onClick={() => this.showDeleteItem(item.id)}>删除</Button>
                 </List.Item>
               )}
             ></List> : 
