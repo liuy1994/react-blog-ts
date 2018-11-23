@@ -5,7 +5,7 @@ import './Login.less'
 import { Link } from 'react-router-dom'
 const FormItem = Form.Item
 import request from "../services/request";
-import store from '../redux/store'
+import store from '../redux'
 
 interface Props {
   form: any
@@ -40,7 +40,7 @@ class Login extends React.Component<any, any> {
         <Form>
           <FormItem label="用户名">
             {getFieldDecorator('userName', {
-              initialValue: '测试444444',
+              initialValue: '测试用户',
               rules: [{ required: true, message: 'Please input your username!', }],
             })(<Input placeholder="请输入用户名"></Input>)}
           </FormItem>

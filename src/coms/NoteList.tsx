@@ -2,7 +2,7 @@ import * as React from 'react'
 import request from '../services/request'
 import './NoteList.less'
 import { Form, Input, Modal, List, Icon } from 'antd'
-import store from '../redux/store'
+import store from '../redux'
 import { connect } from 'react-redux'
 
 interface State {

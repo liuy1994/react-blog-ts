@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import {Link} from 'react-router-dom'
 import docCookies from '../utils/docCookies'
 import request from '../services/request'
-import store from '../redux/store'
+import store from '../redux'
 interface Props {
   userName: string
 }

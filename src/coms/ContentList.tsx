@@ -4,7 +4,7 @@ import request from '../services/request'
 import { List, Button, Modal, Input, Row } from 'antd'
 import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
-import store from '../redux/store'
+import store from '../redux'
 const Search = Input.Search
 interface Props {
   selectedNoteId: number

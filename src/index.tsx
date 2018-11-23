@@ -4,7 +4,7 @@ import App from './App';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 import { HashRouter } from 'react-router-dom';
-import store from './redux/store'
+import store from './redux'
 import { Provider } from 'react-redux'
 import { persistStore } from 'redux-persist'
 import { PersistGate } from 'redux-persist/es/integration/react'
