@@ -19,7 +19,11 @@
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
-    "allowJs": true
+    "allowJs": true,
+    "types": [
+      "react",
+      "jest"
+    ],
   },
   "exclude": [
     "node_modules",
