@@ -31,10 +31,13 @@ axios.interceptors.response.use(
     }
   },
   (err:any) => {
-    if (err && err.response) {
-      err.message = '请求错误'
+    let message = err.response.statusText || '请求错误'
+    switch (err.response.status) {
+      case 401:
+        window.location.href = '#/sign/in'
     }
-    return Promise.reject(err) // 返回接口返回的错误信息
+    // message.error(message)
+    return Promise.reject(message) // 返回接口返回的错误信息
   }
 )
 export default axios
