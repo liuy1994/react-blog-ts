@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { message } from 'antd'
-// axios.defaults.baseURL = '/blog'
+axios.defaults.baseURL = '/blog'
 axios.interceptors.request.use(
   (config: any) => {
     return config
