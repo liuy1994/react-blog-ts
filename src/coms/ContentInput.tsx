@@ -1,11 +1,10 @@
 import * as React from 'react'
 import {Component} from 'react'
-import ReactQuill from 'react-quill'
+import * as ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 import { Spin } from 'antd'
 import './ContentInput.less'
 import request from '../services/request';
-
 
 interface Props {
   content: string,
