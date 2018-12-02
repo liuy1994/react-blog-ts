@@ -12,6 +12,6 @@ declare module 'react-redux';
 // declare module 'redux-persist';
 declare module 'redux-persist/es/integration/react';
 declare module 'redux-persist/es/storage';
-declare module 'react-quill';
+// declare module 'react-quill';
 // declare module 'deep-equal';
-// declare module 'extend';
+// declare module 'node';

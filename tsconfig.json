@@ -23,7 +23,7 @@
     "types": [
       "react",
       "jest"
-    ],
+    ]
   },
   "exclude": [
     "node_modules",
