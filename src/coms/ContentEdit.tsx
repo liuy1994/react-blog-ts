@@ -3,7 +3,7 @@ import request from '../services/request'
 import { Form, Input, Button, Switch } from 'antd'
 import { FormComponentProps } from 'antd/lib/form/Form'
 import './ContentEdit.less'
-import ContentInput233 from './ContentInput233'
+import ContentInput from './ContentInput'
 import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
 const FormItem = Form.Item
@@ -99,7 +99,7 @@ class AddForm extends React.Component<Props & FormComponentProps, State> {
                         {getFieldDecorator('content', {
                             initialValue: content,
                             rules: [{ required: true, message: 'Please input your content!', }],
-                        })(<ContentInput233 onInput={this.inputContent} noteId={selectedNoteId} text={content}></ContentInput233>)}
+                        })(<ContentInput onInput={this.inputContent} noteId={selectedNoteId} text={content}></ContentInput>)}
                     </FormItem>
                     <FormItem label="直接发布" {...formItemLayout}>
                         {getFieldDecorator('publish', {
