@@ -3,7 +3,7 @@ import request from '../services/request'
 import { Form, Input, Button, Switch } from 'antd'
 import { FormComponentProps } from 'antd/lib/form/Form'
 import './ContentEdit.less'
-// import ContentInput from './ContentInput'
+import ContentInput233 from './ContentInput233'
 import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
 const FormItem = Form.Item
@@ -77,8 +77,8 @@ class AddForm extends React.Component<Props & FormComponentProps, State> {
             wrapperCol: { span: 20, align: "left" },
         }
         let { name, brief, content} = this.state
-        // const { match, selectedNoteId } = this.props
-        const { match } = this.props
+        const { match, selectedNoteId } = this.props
+        // const { match } = this.props
         return (
             <div className="content-edit-form">
                 <h3>{match.params.id ? '编辑' : '新增'}博文</h3>
@@ -99,7 +99,7 @@ class AddForm extends React.Component<Props & FormComponentProps, State> {
                         {getFieldDecorator('content', {
                             initialValue: content,
                             rules: [{ required: true, message: 'Please input your content!', }],
-                        })(<span>12312</span>)}
+                        })(<ContentInput233 onInput={this.inputContent} noteId={selectedNoteId} text={content}></ContentInput233>)}
                     </FormItem>
                     <FormItem label="直接发布" {...formItemLayout}>
                         {getFieldDecorator('publish', {

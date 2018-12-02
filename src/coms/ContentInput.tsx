@@ -1,8 +1,8 @@
 import * as React from 'react'
 import {Component} from 'react'
-import * as ReactQuill from 'react-quill'
+// import * as ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
-import { Spin } from 'antd'
+// import { Spin, Input } from 'antd'
 import './ContentInput.less'
 import request from '../services/request';
 
@@ -79,22 +79,23 @@ class ContentInput extends Component<Props, State>{
     console.log(this.refs)
   }
   render() {
-    let { onInput } = this.props
-    let { text, spinning } = this.state
+    // let { onInput } = this.props
+    // let { text, spinning } = this.state
     return (
       <div className="content-input">
         <input type="file" ref={ref => this.inputUpload = ref} onChange={event => this.selectImg(event)}/>
-        <Spin size="large" spinning={spinning}>
-          <ReactQuill
+        {/* <Spin size="large" spinning={spinning}> */}
+          
+          {/* <Input
             ref={ref => this.quillRef = ref}
-            theme="snow"
+          theme="snow"
+          value={text}
             modules={this.modules}
-            value={text}
             height="300"
             placeholder='Compose an epic...'
             onChange={onInput}>
-          </ReactQuill>
-        </Spin>
+          </Input>
+        </Spin> */}
       </div>
     )
   }
