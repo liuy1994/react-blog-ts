@@ -1,5 +1,14 @@
 import axios from 'axios'
 import { message } from 'antd'
+import docCookies from './docCookies'
+import store from '../redux'
+function unlogin() {
+  store.dispatch({
+    type: 'LOGOUT'
+  })
+  docCookies.removeItem('max_blog')
+  window.location.href = '#/sign/in'
+}
 axios.defaults.baseURL = '/blog'
 axios.interceptors.request.use(
   (config: any) => {
@@ -20,7 +29,7 @@ axios.interceptors.response.use(
     }
     // 根据返回的code值来做不同的处理（和后端约定）
     if ('4001, 4002'.includes(res.code)) {
-      window.location.href = '#/sign/in'
+      unlogin()
       return Promise.reject(res)
     }
     if (res.code === '0000') {
@@ -34,7 +43,7 @@ axios.interceptors.response.use(
     let message = err.response.statusText || '请求错误'
     switch (err.response.status) {
       case 401:
-        window.location.href = '#/sign/in'
+        unlogin()
     }
     // message.error(message)
     return Promise.reject(message) // 返回接口返回的错误信息
