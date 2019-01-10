@@ -1,56 +1,44 @@
 import * as React from 'react'
-import {Component} from 'react'
-import * as ReactQuill from 'react-quill'
-import 'react-quill/dist/quill.snow.css'
-import { Spin } from 'antd'
+import { Spin, Icon } from 'antd'
 import './ContentInput.less'
+import BraftEditor from 'braft-editor'
+import 'braft-editor/dist/index.css'
 import request from '../services/request';
+import { iconUrl } from '../utils/constant'
+import { ContentUtils } from 'braft-utils'
 
-
+const IconFont = Icon.createFromIconfontCN({
+  scriptUrl: iconUrl,
+})
 interface Props {
-  content: string,
+  text: string,
   noteId: number,
   onInput: any
 }
 interface State {
-  text: string,
+  editorState: any,
   spinning: boolean
 }
-class ContentInput extends Component<Props, State>{
+class ContentInput extends React.Component<Props, State>{
   constructor(props: Props) {
     super(props)
     this.state = {
-      text: '',
+      editorState: BraftEditor.createEditorState(null),
       spinning: false
     }
   }
-  
-  public inputUpload: any
-  quillRef: any
+
   componentWillReceiveProps(props: Props) {
     this.setState({
-      text: props.content
+      editorState: BraftEditor.createEditorState(props.text)
     })
   }
-  modules = {
-    toolbar: {
-      container: [
-        [{ 'header': [1, 2, false] }],
-        ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-        [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
-        ['link', 'image'],
-        ['clean']
-      ],
-      handlers: {
-        'image': this.imageHandler.bind(this),
-        'clean': this.cleanContent.bind(this)
-      }
-    }
-  }
+  public inputUpload: any
+  editorInstance: any
   cleanContent() {
-    this.setState({ text: '' })
+    this.setState({ editorState: BraftEditor.createEditorState(null) })
   }
-  imageHandler() {
+  imageHandler = () => {
     this.inputUpload.click()
   }
   selectImg(event: any) {
@@ -61,40 +49,60 @@ class ContentInput extends Component<Props, State>{
       this.setState({
         spinning: false
       })
-      this.inserImg(data)
+      // this.inserImg(data)
     }, () => {
       this.setState({
         spinning: false
       })
     })
   }
-  inserImg(url: string){
-    const range = this.quillRef.getEditor().getSelection()
-    this.quillRef.getEditor().insertEmbed(range.index, 'image', url)
-    this.quillRef.getEditor().setSelection(range.index + 1)
+  // inserImg = (url: string) => {
+  inserImg = () => {
+    const { editorState } = this.state
+    ContentUtils.insertText(editorState, 'h1')
   }
-  handleChange(value: string) {
-    this.setState({ text: value })
+  // handleChange(value: string) {
+  //   this.setState({ text: value })
+  // }
+  submitContent = () => {
+    const htmlContent = this.state.editorState.toHTML()
+    console.log(htmlContent)
   }
-  componentDidMount() {
-    console.log(this.refs)
+  handleEditorChange = (editorState) => {
+    console.log(editorState)
   }
+
+  controls = [
+    'undo', 'redo', 'separator',
+    'font-size', 'line-height', 'headings', 'separator',
+    'text-color', 'bold', 'italic', 'underline', 'strike-through', 'separator',
+    'text-indent', 'separator',
+    'list-ul', 'list-ol', 'blockquote', 'code', 'separator',
+    'link', 'hr', {
+        key: 'my-component',
+        type: 'component',
+        component: (
+          <button type="button" data-title="上传图片" className="control-item button" onClick={this.inserImg}>
+            <input type="file" ref={ref => this.inputUpload = ref} onChange={event => this.selectImg(event)} />
+            <IconFont type="icon-pic-s"></IconFont>
+          </button>
+        )
+    }, 'separator',
+    'clear'
+  ]
   render() {
-    let { onInput } = this.props
-    let { text, spinning } = this.state
+    // let { onInput } = this.props
+    let { editorState, spinning } = this.state
     return (
       <div className="content-input">
-        <input type="file" ref={ref => this.inputUpload = ref} onChange={event => this.selectImg(event)}/>
         <Spin size="large" spinning={spinning}>
-          <ReactQuill
-            ref={ref => this.quillRef = ref}
-            theme="snow"
-            modules={this.modules}
-            value={text}
-            height="300"
-            placeholder='Compose an epic...'
-            onChange={onInput}>
-          </ReactQuill>
+          <BraftEditor
+            ref={instance => this.editorInstance = instance}
+            controls={this.controls}
+            value={editorState}
+            onChange={this.handleEditorChange}
+            onSave={this.submitContent}
+          />
         </Spin>
       </div>
     )

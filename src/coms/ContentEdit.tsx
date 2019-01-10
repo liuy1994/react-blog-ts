@@ -78,6 +78,7 @@ class AddForm extends React.Component<Props & FormComponentProps, State> {
         }
         let { name, brief, content} = this.state
         const { match, selectedNoteId } = this.props
+        // const { match } = this.props
         return (
             <div className="content-edit-form">
                 <h3>{match.params.id ? '编辑' : '新增'}博文</h3>
@@ -98,7 +99,7 @@ class AddForm extends React.Component<Props & FormComponentProps, State> {
                         {getFieldDecorator('content', {
                             initialValue: content,
                             rules: [{ required: true, message: 'Please input your content!', }],
-                        })(<ContentInput noteId={selectedNoteId} content={content} onInput={this.inputContent}/>)}
+                        })(<ContentInput onInput={this.inputContent} noteId={selectedNoteId} text={content}></ContentInput>)}
                     </FormItem>
                     <FormItem label="直接发布" {...formItemLayout}>
                         {getFieldDecorator('publish', {

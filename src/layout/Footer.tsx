@@ -1,9 +1,10 @@
 import * as React from 'react'
 import './Footer.less'
 import { Icon, Popover } from 'antd'
+import { iconUrl } from '../utils/constant'
 
 const IconFont = Icon.createFromIconfontCN({
-  scriptUrl: '//at.alicdn.com/t/font_930533_tmrdacuney.js',
+  scriptUrl: iconUrl,
 })
 
 class Footer extends React.Component {
