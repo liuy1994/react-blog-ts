@@ -8,8 +8,8 @@
       "coverage/lcov-report/*.js"
     ]
   },
-"interface-name": [
-  true,
-  "always-prefix"
-]
+  "interface-name": [
+    true,
+    "always-prefix"
+  ]
 }
