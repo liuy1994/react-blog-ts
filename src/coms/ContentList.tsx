@@ -87,7 +87,7 @@ class ContentList extends Component<Props, State> {
                   <Button type="danger" onClick={() => this.showDeleteItem(item.id)}>删除</Button>
                 </List.Item>
               )}
-            ></List> : 
+            /> :
             <h1>Welcome, 选择一个笔记本或者输入关键字搜索</h1>
         }
       </div>
