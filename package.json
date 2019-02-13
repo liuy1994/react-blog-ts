@@ -1,47 +1,46 @@
 {
-  "name": "antd-demo-ts",
-  "version": "0.1.0",
-  "private": true,
+  "name": "react-ts-blog",
+  "version": "1.0.1",
+  "description": "",
+  "main": "./src/index.tsx",
+  "typings": "./index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack.config.js",
+    "dev": "webpack-dev-server --env development"
+  },
+  "author": "max",
+  "license": "ISC",
+  "moduleResolution": "node",
   "dependencies": {
-    "antd": "^3.10.8",
+    "antd": "^3.13.2",
     "axios": "^0.18.0",
     "braft-editor": "^2.1.33",
     "md5": "^2.2.1",
-    "react": "^16.6.3",
-    "react-app-rewire-less": "^2.1.3",
-    "react-dom": "^16.6.3",
-    "react-redux": "^5.1.1",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "react-redux": "^6.0.0",
     "react-router-dom": "^4.3.1",
-    "react-scripts-ts": "^4.0.8",
-    "redux": "4.0.1",
+    "redux": "^4.0.1",
     "redux-persist": "^5.10.0",
-    "redux-thunk": "^2.3.0",
-    "ts-import-plugin": "^1.5.5"
-  },
-  "scripts": {
-    "start": "react-app-rewired start --scripts-version react-scripts-ts",
-    "build": "react-app-rewired build --scripts-version react-scripts-ts",
-    "test": "react-app-rewired test --env=jsdom --scripts-version react-scripts-ts",
-    "eject": "react-scripts-ts eject"
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
-    "@types/jest": "^23.3.9",
-    "@types/node": "^10.12.11",
-    "@types/react": "^16.7.6",
-    "@types/react-dom": "^16.0.9",
-    "@types/react-redux": "^6.0.9",
+    "@types/md5": "^2.1.33",
+    "@types/react": "^16.7.22",
+    "@types/react-dom": "^16.0.11",
+    "@types/react-redux": "^7.0.1",
     "@types/react-router-dom": "^4.3.1",
-    "@types/redux": "^3.6.0",
-    "@types/redux-persist": "^4.3.1",
-    "react-app-rewired": "^1.6.2",
-    "typescript": "^3.1.6"
-  },
-  "baseUrl": "http://localhost:3000",
-  "proxy": "http://47.52.234.164:2333",
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+    "awesome-typescript-loader": "^4.0.0",
+    "clean-webpack-plugin": "^1.0.1",
+    "css-loader": "^2.1.0",
+    "html-webpack-plugin": "^3.2.0",
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.1.0",
+    "source-map-loader": "^0.2.4",
+    "style-loader": "^0.23.1",
+    "typescript": "^3.2.4",
+    "webpack": "^3.12.0",
+    "webpack-dev-server": "^2.11.3"
+  }
 }
