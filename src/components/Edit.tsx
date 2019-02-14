@@ -3,7 +3,7 @@ import request, { AxiosResponse } from '../services/request'
 import { Form, Input, Button, Switch } from 'antd'
 import { FormComponentProps } from 'antd/lib/form/Form'
 import './Edit.scss'
-import ContentInput from './Editor'
+import Editor from './Editor'
 import { Link } from 'react-router-dom'
 const FormItem = Form.Item
 
@@ -23,6 +23,7 @@ interface State {
     name: string,
     brief: string,
     content: string,
+    text: string,
     id: any
 }
 class AddForm extends React.Component<Props & FormComponentProps, State> {
@@ -32,6 +33,7 @@ class AddForm extends React.Component<Props & FormComponentProps, State> {
             name: '',
             brief: '',
             content: '',
+            text: '',
             id: null
         }
     }
@@ -55,6 +57,7 @@ class AddForm extends React.Component<Props & FormComponentProps, State> {
                 name: res.data.name,
                 brief: res.data.brief,
                 content: res.data.content,
+                text: res.data.content,
                 id: res.data.id
             })
         })
@@ -67,19 +70,18 @@ class AddForm extends React.Component<Props & FormComponentProps, State> {
     componentWillMount() {
         if(this.props.match.path !== '/add') this.getDetail()
     }
-    
+
     render() {
         const { getFieldDecorator } = this.props.form
         const formItemLayout = {
             labelCol: { span: 4 },
             wrapperCol: { span: 20, align: "left" },
         }
-        let { name, brief, content} = this.state
+        let { name, brief, content, text} = this.state
         const { match } = this.props
-        // const { match } = this.props
         return (
             <div className="content-edit-form">
-                <h3>{match.params.id ? '编辑' : '新增'}博文</h3>
+                <h3>{match.params.id ? '编辑' : '新增'}文章</h3>
                 <Form layout="vertical">
                     <FormItem label="名称">
                         {getFieldDecorator('name', {
@@ -97,7 +99,7 @@ class AddForm extends React.Component<Props & FormComponentProps, State> {
                         {getFieldDecorator('content', {
                             initialValue: content,
                             rules: [{ required: true, message: 'Please input your content!', }],
-                        })(<ContentInput onInput={this.inputContent} text={content} />)}
+                        })(<Editor onInput={this.inputContent} text={text} />)}
                     </FormItem>
                     <FormItem label="直接发布" {...formItemLayout}>
                         {getFieldDecorator('publish', {

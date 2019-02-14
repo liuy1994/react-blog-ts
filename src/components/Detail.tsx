@@ -1,7 +1,7 @@
 import * as React from 'react'
 // import './ContentItem.less'
 import request from '../services/request'
-import { Spin } from 'antd';
+import { Spin } from 'antd'
 
 interface Props {
   match: {
@@ -43,18 +43,15 @@ class Detail extends React.Component<Props, State> {
     let { detail } = this.state
     return (
       <div className="content-main">
-      {
-          detail ? 
-            <div>
-              <h1>{detail.name}</h1>
-              <h2>{detail.brief}</h2>
-              <div className="item-content" dangerouslySetInnerHTML={{
-                __html: detail.content
-              }} />
-            </div> : 
-            <Spin tip="Loading..." />
-      }
-        
+      {detail ?
+        <div>
+          <h1>{detail.name}</h1>
+          <h2>{detail.brief}</h2>
+          <div className="item-content" dangerouslySetInnerHTML={{
+            __html: detail.content
+          }} />
+        </div> :
+        <Spin tip="Loading..." />}
       </div>
     )
   }

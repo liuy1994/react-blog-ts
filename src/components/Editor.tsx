@@ -1,10 +1,8 @@
 import * as React from 'react'
 import {Spin, Icon} from 'antd'
-// import './ContentInput.less'
 import 'braft-editor/dist/index.css'
 import request from '../services/request'
 import {iconUrl} from '../utils/constant'
-// import { ContentUtils } from
 const {ContentUtils} = require('braft-utils')
 const IconFont = Icon.createFromIconfontCN({
     scriptUrl: iconUrl,
@@ -30,11 +28,12 @@ class Editor extends React.Component<Props, State> {
             spinning: false
         }
     }
-    componentWillReceiveProps(props: Props) {
-        this.setState({
-            editorState: BraftEditor.createEditorState(props.text)
-        })
-    }
+    // componentWillReceiveProps(props: Props) {
+    //     console.log(props)
+    //     this.setState({
+    //         editorState: BraftEditor.createEditorState(props.text)
+    //     })
+    // }
 
     public inputUpload: any
     editorInstance: any
@@ -76,7 +75,8 @@ class Editor extends React.Component<Props, State> {
         console.log(htmlContent)
     }
     handleEditorChange = (editorState: any) => {
-        console.log(editorState)
+        this.setState({ editorState })
+        this.props.onInput(editorState.toHTML())
     }
 
     controls = [
@@ -99,11 +99,11 @@ class Editor extends React.Component<Props, State> {
     ]
 
     render() {
+                    // ref={(instance: any) => this.editorInstance = instance}
         let {editorState, spinning} = this.state
         return <div className="content-input">
             <Spin size="large" spinning={spinning}>
                 <BraftEditor
-                    ref={(instance: any) => this.editorInstance = instance}
                     controls={this.controls}
                     value={editorState}
                     onChange={this.handleEditorChange}

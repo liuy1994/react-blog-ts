@@ -4,6 +4,7 @@ import cookie from '../utils/cookie'
 import request from '../services/request'
 import { Button } from 'antd'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import './Header.scss'
 interface Props {
     userName: string
@@ -24,9 +25,9 @@ class Header extends React.Component<Props> {
         return (
             <div className="header">
                 <div className="content">
-                    {/*<div className="logo">*/}
-                        {/*<Link to='/list'>This is a logo</Link>*/}
-                    {/*</div>*/}
+                    <div className="logo">
+                        <Link to='/list'>This is a logo</Link>
+                    </div>
                     <div>Hello,&nbsp;&nbsp;
                         {userName ?
                             (<span><a href="/#/user">{userName}</a> <Button type="primary" size="small" onClick={this.logout}>注销</Button></span>)
