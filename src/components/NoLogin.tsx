@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Login from './Login'
 import SignUp from './SignUp'
-// import './NoLogin.less'
+import './NoLogin.scss'
 
 interface Props {
   match: {
@@ -17,7 +17,7 @@ class NoLogin extends React.Component<Props, any> {
   render() {
     const { match } = this.props
     return (
-      <div className="noLogin">
+      <div className="no-login">
         <Switch>
           <Redirect exact path="/" to={{ pathname: '/in' }} />
           <Route path={`${match.path}/in`} component={Login}></Route>

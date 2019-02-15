@@ -1,0 +1,13 @@
+.no-login{
+  .ant-form{
+    width: 320px;
+    margin: 0 auto;
+  }
+  .buttons{
+    display: flex;
+    justify-content: space-between;
+    a{
+      text-decoration: underline;
+    }
+  }
+}
