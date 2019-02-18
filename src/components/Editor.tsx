@@ -28,15 +28,15 @@ class Editor extends React.Component<Props, State> {
             spinning: false
         }
     }
-    // componentWillReceiveProps(props: Props) {
-    //     console.log(props)
-    //     this.setState({
-    //         editorState: BraftEditor.createEditorState(props.text)
-    //     })
-    // }
+    componentWillReceiveProps (nextProps: Props) {
+        if (nextProps.text !== this.props.text) {
+            this.setState({
+                editorState: BraftEditor.createEditorState(nextProps.text)
+            })
+        }
+    }
 
     public inputUpload: any
-    editorInstance: any
 
     cleanContent() {
         this.setState({editorState: BraftEditor.createEditorState(null)})
@@ -50,26 +50,24 @@ class Editor extends React.Component<Props, State> {
         this.setState({
             spinning: true
         })
-        if (event) request.upload(event.target.files[0]).then((data: any) => {
-            this.setState({
-                spinning: false
-            })
-            // this.inserImg(data)
-        }, () => {
+        if (event) request.upload(event.target.files[0]).then((data: string) => {
+            this.insertImg(data)
+        }).finally(() => {
             this.setState({
                 spinning: false
             })
         })
     }
 
-    // inserImg = (url: string) => {
-    inserImg = () => {
-        const {editorState} = this.state
-        ContentUtils.insertText(editorState, 'h1')
+    insertImg = (url: string) => {
+        this.setState({
+            editorState: ContentUtils.insertMedias(this.state.editorState, [{
+                type: 'IMAGE',
+                url: url
+            }])
+        })
     }
-    // handleChange(value: string) {
-    //   this.setState({ text: value })
-    // }
+
     submitContent = () => {
         const htmlContent = this.state.editorState.toHTML()
         console.log(htmlContent)
@@ -89,7 +87,7 @@ class Editor extends React.Component<Props, State> {
             key: 'my-component',
             type: 'component',
             component: (
-                <button type="button" data-title="上传图片" className="control-item button" onClick={this.inserImg}>
+                <button type="button" data-title="上传图片" className="control-item button" onClick={() => this.inputUpload.click()}>
                     <input type="file" ref={ref => this.inputUpload = ref} onChange={event => this.selectImg(event)} />
                     <IconFont type="icon-pic-s" />
                 </button>
@@ -99,7 +97,6 @@ class Editor extends React.Component<Props, State> {
     ]
 
     render() {
-                    // ref={(instance: any) => this.editorInstance = instance}
         let {editorState, spinning} = this.state
         return <div className="content-input">
             <Spin size="large" spinning={spinning}>
@@ -113,5 +110,4 @@ class Editor extends React.Component<Props, State> {
         </div>
     }
 }
-
 export default Editor

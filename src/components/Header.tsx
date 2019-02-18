@@ -26,7 +26,7 @@ class Header extends React.Component<Props> {
             <div className="header">
                 <div className="content">
                     <div className="logo">
-                        <Link to='/list'>This is a logo</Link>
+                        <a href='/#/list'>This is a logo</a>
                     </div>
                     <div>Hello,&nbsp;&nbsp;
                         {userName ?

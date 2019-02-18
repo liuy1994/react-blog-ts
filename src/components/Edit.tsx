@@ -1,6 +1,6 @@
 import * as React from 'react'
 import request, { AxiosResponse } from '../services/request'
-import { Form, Input, Button, Switch } from 'antd'
+import { Form, Input, Button, Switch, message } from 'antd'
 import { FormComponentProps } from 'antd/lib/form/Form'
 import './Edit.scss'
 import Editor from './Editor'
@@ -45,6 +45,7 @@ class AddForm extends React.Component<Props & FormComponentProps, State> {
                     id: this.state.id
                 }
                 request.saveContentItem(params).then(() => {
+                    message.success('Save success')
                     window.location.href = '/#/list'
                 })
             }

@@ -41,6 +41,7 @@ export  default {
         return axios.post('content/detail', { id })
     },
     saveContentItem({ name, content, brief, publish, id }: ContentItem){
+        content = content.replace(/\"/g, '\\\"')
         return axios.post('content/save', { name, content, brief, publish, id})
     },
     deleteContentItem(id: number) {
