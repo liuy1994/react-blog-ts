@@ -1,5 +1,11 @@
 .content-list{
   .ant-row {
     display: flex;
+    margin-bottom: 12px;
+  }
+  .ant-list-item{
+    .ant-btn{
+      margin-left: 12px;
+    }
   }
 }

@@ -3,6 +3,8 @@ import request, { UserInfo, AxiosResponse } from '../services/request'
 import { Form, Input, Button } from 'antd'
 import { FormComponentProps } from 'antd/lib/form/Form'
 const FormItem = Form.Item
+import './User.scss'
+import {Link} from "react-router-dom";
 interface Props{
   form: {
     getFieldDecorator: any,
@@ -65,23 +67,24 @@ class UserForm extends React.Component<Props & FormComponentProps, UserInfo>{
           <FormItem label="邮箱">
             {getFieldDecorator('email', {
               initialValue: email,
-              // rules: [{ required: true, message: 'Please input your email!', }],
+              rules: [{ required: true, message: 'Please input your email!', }],
             })(<Input placeholder="请输入邮箱" />)}
           </FormItem>
           <FormItem label="手机号">
             {getFieldDecorator('mobile', {
               initialValue: mobile,
-              // rules: [{ required: true, message: 'Please input your mobile!', }],
+              rules: [{ required: true, message: 'Please input your mobile!', }],
             })(<Input placeholder="请输入邮箱" />)}
           </FormItem>
           <FormItem label="微信号">
             {getFieldDecorator('wechat', {
               initialValue: wechat,
-              // rules: [{ required: true, message: 'Please input your wechat!', }],
+              rules: [{ required: true, message: 'Please input your wechat!', }],
             })(<Input placeholder="请输入微信号" />)}
           </FormItem>
           <FormItem label="">
             <Button type="primary" onClick={this.saveUserInfo}>保存</Button>
+            <Link to={`/list`}><Button className="back-button">返回</Button></Link>
           </FormItem>
         </Form>
       </div>
