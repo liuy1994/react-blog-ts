@@ -11,6 +11,7 @@ function unlogin() {
 }
 
 // axios.defaults.baseURL = '/blog'
+axios.defaults.timeout =  6000
 axios.interceptors.response.use(
     (response: any): any => {
         let res
@@ -31,11 +32,16 @@ axios.interceptors.response.use(
         }
     },
     (err: any) => {
-        let msg = err.response.statusText || '请求错误'
+        let msg = '暂时连接不到Mysql，请放弃'
+        if(err.response && err.response.statusText) {
+            msg = err.response.statusText
+        }
         message.error(msg)
-        switch (err.response.status) {
-            case 401:
-                unlogin()
+        if(err.response && err.response.status){
+            switch (err.response.status) {
+                case 401:
+                    unlogin()
+            }
         }
         return Promise.reject(msg) // 返回接口返回的错误信息
     }
