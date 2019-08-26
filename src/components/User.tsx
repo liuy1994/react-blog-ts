@@ -1,6 +1,6 @@
 import * as React from 'react'
 import request, { UserInfo, AxiosResponse } from '../services/request'
-import { Form, Input, Button } from 'antd'
+import { Form, Input, Button, message } from 'antd'
 import { FormComponentProps } from 'antd/lib/form/Form'
 const FormItem = Form.Item
 import './User.scss'
@@ -37,6 +37,7 @@ class UserForm extends React.Component<Props & FormComponentProps, UserInfo>{
           name: this.state.name
         }
         request.updateUserInfo(params).then(() => {
+            message.success('Saved')
           this.getUserInfo()
         })
       }

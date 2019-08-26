@@ -10,11 +10,11 @@ function unlogin() {
     window.location.href = '#/sign/in'
 }
 
-// axios.defaults.baseURL = '/blog'
 axios.defaults.timeout =  6000
 axios.interceptors.response.use(
     (response: any): any => {
         let res
+        console.log('success')
         if (response.data === undefined) {
             res = JSON.parse(response.request.responseText)
         } else {
@@ -32,6 +32,7 @@ axios.interceptors.response.use(
         }
     },
     (err: any) => {
+        console.log('fail')
         let msg = '暂时连接不到Mysql，请放弃'
         if(err.response && err.response.statusText) {
             msg = err.response.statusText
