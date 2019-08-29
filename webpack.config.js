@@ -91,7 +91,7 @@ let config = {
             cache: true,
         }),
         new CompressionPlugin(),
-        new webpack.HotModuleReplacementPlugin()
+        // new webpack.HotModuleReplacementPlugin(),
     ]
 }
 
