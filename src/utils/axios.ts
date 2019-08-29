@@ -9,7 +9,7 @@ function unlogin() {
     cookie.removeItem('max_blog')
     window.location.href = '#/sign/in'
 }
-
+axios.defaults.baseURL = '/blog'
 axios.defaults.timeout =  6000
 axios.interceptors.response.use(
     (response: any): any => {

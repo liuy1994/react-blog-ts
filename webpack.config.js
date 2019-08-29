@@ -55,7 +55,7 @@ let config = {
         }),
         new WebpackBundleAnalyzer.BundleAnalyzerPlugin(),
         // new ExtractTextPlugin('styles.css'),
-        // new UglifyJsPlugin(),
+        new UglifyJsPlugin(),
         new webpack.HotModuleReplacementPlugin()
     ]
 }
