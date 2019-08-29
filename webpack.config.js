@@ -32,6 +32,7 @@ let config = {
     },
     module: {
         rules: [
+            { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
             {test: /\.tsx?$/, use: 'awesome-typescript-loader'},
             {enforce: 'pre', test: /\.js$/, use: 'source-map-loader'},
             // {
@@ -42,14 +43,7 @@ let config = {
             //     })
             // },
             {test: /\.scss$/, use: extractSCSS.extract({ fallback: 'style-loader', use: [ 'css-loader', 'sass-loader' ] })},
-            {test: /\.css$/, use: extractCSS.extract({ fallback: 'style-loader', use: [ 'css-loader' ] })}
-            // {
-            //     test: /\.css$/,
-            //     use: ExtractTextPlugin.extract({
-            //         fallback: 'style-loader',
-            //         use: 'css-loader'
-            //     })
-            // }
+            {test: /\.css$/, use: extractCSS.extract({ fallback: 'style-loader', use: [ 'css-loader' ] }), exclude: /node_modules/}
         ]
     },
     plugins: [
