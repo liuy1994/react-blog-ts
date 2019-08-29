@@ -43,7 +43,7 @@ let config = {
             //     })
             // },
             {test: /\.scss$/, use: extractSCSS.extract({ fallback: 'style-loader', use: [ 'css-loader', 'sass-loader' ] })},
-            {test: /\.css$/, use: extractCSS.extract({ fallback: 'style-loader', use: [ 'css-loader' ] }), exclude: /node_modules/}
+            {test: /\.css$/, use: extractCSS.extract({ fallback: 'style-loader', use: [ 'css-loader' ] })}
         ]
     },
     plugins: [
@@ -91,7 +91,7 @@ let config = {
             cache: true,
         }),
         new CompressionPlugin(),
-        // new webpack.HotModuleReplacementPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
     ]
 }
 

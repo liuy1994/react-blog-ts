@@ -6,7 +6,7 @@
   "typings": "./index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config webpack.config.js --mode production",
+    "build": "webpack --env production --config webpack.config.js",
     "dev": "webpack-dev-server --env development"
   },
   "author": "max",
