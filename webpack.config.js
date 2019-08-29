@@ -22,8 +22,8 @@ let config = {
         hot: true,
         port: 9090,
         proxy: {
-            // '/': 'http://47.52.234.164:9000'
-            '/blog': 'http://127.0.0.1:9000/'
+            '/blog': 'http://47.52.234.164:9000'
+            // '/blog': 'http://127.0.0.1:9000/'
         }
     },
     devtool: 'inline-source-map',
@@ -93,7 +93,7 @@ let config = {
                     unused: false,
                 },
             },
-            sourceMap: true,
+            sourceMap: false,
             cache: true,
         }),
         new CompressionPlugin(),
