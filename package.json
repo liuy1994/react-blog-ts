@@ -14,7 +14,7 @@
   "moduleResolution": "node",
   "dependencies": {
     "antd": "^3.13.2",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "braft-editor": "^2.1.33",
     "md5": "^2.2.1",
     "react": "^16.7.0",
